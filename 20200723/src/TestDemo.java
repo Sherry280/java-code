@@ -73,7 +73,7 @@ public class TestDemo {
          return arr2;
     }
     //给定一个整型数组, 实现冒泡排序(升序排序)
-    public static int[] bubbleSort(int[] arr,int n){
+    public static int[] bubbleSort1(int[] arr,int n){
          if(n<=1){
              return arr;
          }
@@ -100,17 +100,32 @@ public class TestDemo {
              if(arr[i]>arr[i+1]){
                 return false;
              }
-
-
              }
          return true;
+    }
+    /**
+      * @Description: 判断数组是否有序
+      * @Param:
+      * @return:
+      * @Auther: xingyuyu
+      * @Date: 2020/7/24
+      */
+    public static boolean isSorted2(int[] arr){
 
+        for(int i=0;i<arr.length-1;i++){
+            if(arr[i]<arr[i+1]){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void bubbleSort(int[] array){
 
     }
 
 
     public static void main(String[] args) {
-         int[] arr={2,3,4,5,6,9};
+         int[] arr={2,3,4,5,66,9};
         System.out.println(isSorted(arr));
 
 
