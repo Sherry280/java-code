@@ -44,11 +44,6 @@ public class TestDemo {
         headA.next=headB.next.next;
     }
 
-
-
-
-
-
     public static void main(String[] args) {
        MyLinkedList myLinkedList=new MyLinkedList();
        myLinkedList.addIndex(0,3);
@@ -63,12 +58,15 @@ public class TestDemo {
         myLinkedList2.addIndex(1,8);
         myLinkedList2.addIndex(2,12);
         myLinkedList2.addIndex(3,15);
-        myLinkedList2.addIndex(4,45);
-        myLinkedList2.addIndex(5,75);
+        myLinkedList2.addIndex(4,12);
+        myLinkedList2.addIndex(5,12);
         myLinkedList2.diaplay();
-        creatCut(myLinkedList.head,myLinkedList2.head);
-        Node ret=getIntersectionNode(myLinkedList.head,myLinkedList2.head);
-        System.out.println(ret.data);
+//        creatCut(myLinkedList.head,myLinkedList2.head);
+//        Node ret=getIntersectionNode(myLinkedList.head,myLinkedList2.head);
+//        System.out.println(ret.data);
+        Node ret=myLinkedList2.detectCycle(null);
+        System.out.println(ret);
+
 
 
 
