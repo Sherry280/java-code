@@ -14,8 +14,10 @@ public class TestDemo {
         System.out.println(Long.toOctalString(19));
 
         String s=Long.toOctalString(19);
-        Long d=Long.parseLong(s,8);
-        System.out.println(d);
+        Long e=Long.parseLong(s,8);
+        System.out.println(e);
+
+
 
 
     }
