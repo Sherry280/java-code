@@ -65,12 +65,7 @@ public class TestDemo {
             }
         }
         return false;
-
-
-
     }
-
-
     public static void main2(String[] args) {
         TestDemo test=new TestDemo();
         int[][] arr={{1,2,8,9},
