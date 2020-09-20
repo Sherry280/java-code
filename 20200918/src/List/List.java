@@ -1,6 +1,6 @@
 package List;
 
-public interface List {
+public interface List extends Iterable{
     boolean add(Integer e);
     void add(int index,Integer e);
     //根据下标删除
