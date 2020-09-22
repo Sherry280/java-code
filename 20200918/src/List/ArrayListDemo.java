@@ -50,6 +50,11 @@ public class ArrayListDemo {
         System.out.println("list2="+list);
         System.out.println("size2.size="+list2.size());
 
+        Iterator it=list.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
+
 
     }
 }

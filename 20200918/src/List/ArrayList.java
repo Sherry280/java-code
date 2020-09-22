@@ -186,6 +186,6 @@ public class ArrayList implements List {
 
     @Override
     public Iterator iterator() {
-        return null;
+        return  new ArrayListIteartor(this);
     }
 }
