@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    //打印杨辉三角
 
     public static List<List<Integer>> generate(int numRows){
         //最外层一定是List
