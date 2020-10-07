@@ -1,9 +1,9 @@
 package impl;
 
 public class TreeNode {
-    int v;
-    TreeNode right;
-    TreeNode left;
+    public int v;
+    public TreeNode right;
+    public TreeNode left;
 
     TreeNode(int x){
         v=x;

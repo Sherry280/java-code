@@ -21,7 +21,7 @@ public class SomeMethod1 {
         }
         return contains4(root.right,node);
     }
-    
+
 
     public static void main(String[] args) {
         TreeNode root=BuildTree.buildTree1();
