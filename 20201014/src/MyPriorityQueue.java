@@ -70,7 +70,7 @@ public class MyPriorityQueue {
 
     public static void main(String[] args) {
         MyPriorityQueue myPriorityQueue=new MyPriorityQueue();
-        //int[] array={1,4,3,5,6};
+
         myPriorityQueue.add(1);
         myPriorityQueue.add(4);
         myPriorityQueue.add(3);
