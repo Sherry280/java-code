@@ -1,9 +1,11 @@
-import java.util.*;
+package impl;
+
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Main1 {
-
-    //输入一串数字，20201018，打印在数组中输出[20201018]
-
     public static int[] getDigits(long n) {
         //定义一个栈，用来接收传进去的数字，然后再进行打印输出，数字的顺序要求不变
         Deque<Integer> stack = new LinkedList<>();
@@ -36,27 +38,4 @@ public class Main1 {
 
     }
 
-
-    //将一个long类型的数字转成单个字符放在数组中输出
-    //long a=20201018；
-    //int[] array={2,0,2,0,1,0,1,8}
-    //
-    public static int getPos(int n){
-        if(n<=9){
-            return n;
-        }
-        int res=0;
-//        while(n%10!=0){
-//            res++;
-//        }
-        return res;
-    }
-    private static int[] reverse(){
-        return null;
-    }
-
-    public static void main1(String[] args) {
-        Main1 main1=new Main1();
-        System.out.println(main1.getPos(20201018));
-    }
 }

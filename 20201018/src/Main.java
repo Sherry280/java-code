@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class Main {
 
-//    //求n的p次方
-//    public static long pow(int n,int p){
-//        long r=1;
-//        for(int i=0;i<p;i++){
-//            r*=n;
-//        }
-//        return r;
-//    }
+    //求n的p次方
+    public static long pow(int n,int p){
+        long r=1;
+        for(int i=0;i<p;i++){
+            r*=n;
+        }
+        return r;
+    }
 
     private static long 转10进制(String hexString){
         long r=0;
