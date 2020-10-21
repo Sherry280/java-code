@@ -99,7 +99,9 @@ public class Hoare {
         int lowIndex=left;
         int rightIndex=right;
         while(lowIndex<rightIndex){
-            if(lowIndex<rightIndex)
+            if(lowIndex<rightIndex){
+
+            }
         }
 
 
