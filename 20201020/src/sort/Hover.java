@@ -1,14 +1,14 @@
 package sort;
 
-public class Hoare {
+import java.util.Arrays;
+
+public class Hover {
     public static void quickSort(long[] array) {
         quickSortInternal(array, 0, array.length - 1);
     }
 
     // 区间是 [lowIndex, highIndex]
-    private static void quickSortInternal(long[] array,
-                                          int lowIndex,
-                                          int highIndex) {
+    private static void quickSortInternal(long[] array, int lowIndex, int highIndex) {
         // 由于是闭区间，所以，区间内个个数需要加个 1
         int size = highIndex - lowIndex + 1;
         if (size <= 1) {
@@ -30,7 +30,7 @@ public class Hoare {
     // 3. 保证 小于等于的在左边，大于等于的在右边（但没有顺序要求)
     private static int partition(long[] array, int lowIndex, int highIndex) {
         // 选择合适的方法
-        return partitionHover(array, lowIndex, highIndex);
+        return partition前后(array, lowIndex, highIndex);
     }
 
     private static void swap(long[] array, int index1, int index2) {
@@ -69,7 +69,7 @@ public class Hoare {
     }
 
     //挖坑
-    private static int partitionHoare(long[] array,int lowIndex,int highIndex){
+    private static int partition挖坑(long[] array,int lowIndex,int highIndex){
         int leftIndex=lowIndex;
         int rightIndex=highIndex;
         long key=array[lowIndex];
@@ -92,6 +92,36 @@ public class Hoare {
     }
 
 
+
+    private static int partition前后(long[] array,int lowIndex,int highIndex){
+        int separateIndex=lowIndex+1;
+        for(int i=lowIndex+1;i<=highIndex;i++){
+            if(array[i]<array[lowIndex]){
+                swap(array,i,separateIndex);
+                separateIndex++;
+            }
+        }
+        swap(array,lowIndex,separateIndex-1);
+        return separateIndex-1;
+    }
+
+
+    public static void main(String[] args) {
+        long[] array1={2,5,8,0,67,54,23,8};
+        long[] array2={2,5,7,9,11,13};
+        long[] array3={6,8,0,88,54,22};
+        long[] array4={9,8,7,6,5,4,3,2,1};
+
+
+        分割(array4,0,array4.length-1);
+        System.out.println(Arrays.toString(array4));
+//        quickSort(array);
+//        System.out.println(Arrays.toString(array));
+
+    }
+
+//将数组中的数字，奇数放到偶数的前面
+
     private static void 分割(long[] array,int left,int right){
         if(array.length==0){
             return;
@@ -99,9 +129,15 @@ public class Hoare {
         int lowIndex=left;
         int rightIndex=right;
         while(lowIndex<rightIndex){
-            if(lowIndex<rightIndex){
+            while(lowIndex<rightIndex&&array[rightIndex]%2==0){
+                rightIndex--;
 
             }
+            while(lowIndex<rightIndex&&array[lowIndex]%2!=0){
+                lowIndex++;
+            }
+            swap(array,lowIndex,rightIndex);
+
         }
 
 
