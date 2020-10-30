@@ -21,11 +21,13 @@ public class removeTestCase {
     //3.删除一个叶子结点，其是双亲的左孩子
     public static void case3(){
         BST bst=new BST();
+
         bst.insert(5);
         bst.insert(3);
         bst.insert(6);
         bst.insert(2);
-        boolean remove=bst.remove(3);
+
+        boolean remove=bst.remove(2);
         System.out.println(remove);
     }
     //4.删除一个叶子结点，其是双亲的右孩子
@@ -133,6 +135,6 @@ public class removeTestCase {
     }
 
     public static void main(String[] args) {
-        case6();
+        case11();
     }
 }

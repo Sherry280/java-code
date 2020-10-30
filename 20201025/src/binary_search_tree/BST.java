@@ -68,8 +68,10 @@ public class BST {
                 removeInternal(current,parent);
                 return true;
             }else if(comp<0){
+                parent=current;
                 current=current.left;
             }else{
+                parent=current;
                 current=current.right;
             }
         }
