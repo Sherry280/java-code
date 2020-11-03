@@ -5,7 +5,78 @@ import java.util.Scanner;
 import static java.lang.Math.pow;
 
 public class SimCode1 {
+
+
     public static void main(String[] args) {
+        //判断是否为天才
+            Scanner sc=new Scanner(System.in);
+
+            while(sc.hasNext()){
+                int s=sc.nextInt();
+                //System.out.println();
+                if(s>140){
+                    System.out.println("Genius");
+                }
+            }
+        }
+
+
+    public static void main4(String[] args) {
+        //假设你们社团要竞选社长，有两名候选人分别是A和B，社团每名同学必须并且只能投一票，最终得票多的人为社长.
+        //一行，字符序列，包含A或B，输入以字符0结束。
+        //一行，一个字符，A或B或E，输出A表示A得票数多，输出B表示B得票数多，输出E表示二人得票数相等。
+        //
+        //思路：
+        //1.要对输入的字符串进行遍历，字符串转数组，计算A,B的次数
+        Scanner sc=new Scanner(System.in);
+        String s1=sc.nextLine();
+        //String[] s=s1.split("0");
+        char[] ss=s1.toCharArray();//转换成字符串
+        int count=0;
+        int count2=0;
+        int count3=0;
+
+        //怎样对字符串数组进行遍历
+        for(int i=0;i<ss.length;i++){
+            char c=s1.charAt(i);
+            if(c=='A'){
+                count++;
+            }else if(c=='B'){
+                count2++;
+
+            }else{
+                count3++;
+            }
+        }
+        //
+        if(count>count2){
+            if(count>count3) {
+                System.out.println('A');
+            }else{
+                System.out.println('E');
+            }
+        }else if(count==count2){
+
+            System.out.println('E');
+        }else{
+            System.out.println('B');
+        }
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+    public static void main3(String[] args) {
         //期中考试开始了，大家都想取得好成绩，争夺前五名。
         // 从键盘输入n个学生成绩（不超过40个），输出每组排在前五高的成绩。
         Scanner sc=new Scanner(System.in);
@@ -33,9 +104,6 @@ public class SimCode1 {
         for(int i=0;i<5;i++){
             System.out.print(score[i]+" ");
         }
-
-
-
 
 
 
@@ -67,19 +135,6 @@ public class SimCode1 {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
