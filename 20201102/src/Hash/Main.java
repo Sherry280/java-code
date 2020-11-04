@@ -13,7 +13,7 @@ public class Main {
         System.out.println(map.get(p2));
         System.out.println();
         //自定义使用HashSet和HashMap的key时：1.必须重写hashCode和equals方法
-        
+
 
     }
 
