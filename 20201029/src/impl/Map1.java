@@ -5,17 +5,21 @@ import java.util.TreeMap;
 
 public class Map1 {
     public static void main(String[] args) {
+
         Map<String,String> m=new TreeMap<>();
+
+        //put(key,value):插入key-value的键值对
         m.put("林冲","豹子头");
         m.put("鲁智深","花和尚");
         m.put("武松","行者");
         m.put("宋江","及时雨");
 
+
         String str=m.put("李逵","黑旋风");
         System.out.println(m.size());
         System.out.println(m);
 
-        //注意key不能为空，但是value可以为空
+        //put(key,value):注意key不能为空，但是value可以为空，key如果为空，会抛空指针异常
         str=m.put("无名",null);
         System.out.println(m.size());
 
