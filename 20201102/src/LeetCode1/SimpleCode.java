@@ -3,7 +3,55 @@ package LeetCode1;
 import java.util.Scanner;
 
 public class SimpleCode {
+
     public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+
+        while(sc.hasNext()){
+            //输入进行计算的表达式
+            String s=sc.nextLine();
+            //将表达式按照运算符进行分割
+            String[] str=s.split("[+\\-*/]");
+
+            //分割后的情况进行判断
+            if(str.length<2){
+                System.out.println("“Invalid operation!");
+            }else{
+                //进行表达式的计算
+                double a=Double.parseDouble(str[0]);
+                double b=Double.parseDouble(str[1]);
+                String  opt=s.substring(str[0].length(),str[0].length()+1);
+
+                switch(opt){
+                    case "+":
+                        System.out.printf("%.4f+%.4f=%.4f\n",a,b,a+b);
+                        break;
+                    case "-":
+                        System.out.printf("%.4f-%.4f=%.4f\n",a,b,a-b);
+                        break;
+                    case "*":
+                        System.out.printf("%.4f*%.4f=%.4f\n",a,b,a*b);
+                        break;
+                    default:
+                        if(b==0){
+                            System.out.println("Wrong!Division by zero!");
+                        }else {
+                            System.out.printf("%.4f/%.4f=%.4f\n", a, b, a / b);
+                            break;
+                        }
+                }
+
+            }
+
+        }
+    }
+
+
+
+
+    public static void main1(String[] args) {
+
+
         //KiKi想获得某年某月有多少天，请帮他编程实现。输入年份和月份，计算这一年这个月有多少天。
         Scanner sc = new Scanner(System.in);
 

@@ -106,6 +106,48 @@ public class MyLinkedList {
         //没有找到要删的结点
         return null;
     }
+    //查找关键字key是否包含在单链表中
+    public boolean contains(int key){
+        Node cur=this.head;
+        while(cur!=null){
+            if(cur.data==key){
+                return true;
+            }
+            cur=cur.next;
+        }
+        return false;
+
+    }
+
+
+
+    //删除所有值为key的结点
+    public void removeAllKey(int key){
+        //定义一个prev指向要删除的节点的前一个
+        //定义一个cur指向要删除的结点
+        Node prev=this.head;
+        Node cur=this.head.next;
+
+        while(cur!=null){
+            if(cur.data==key){
+                prev.next=cur.next;
+                cur=cur.next;
+            }else{
+                prev=cur;
+                cur=cur.next;
+            }
+        }
+        //现在如果有还有和key相等的值，那么一定在头节点
+        if(this.head.data==key){
+            this.head=this.head.next;
+        }
+
+    }
+
+
+    public void clear(){
+        this.head=null;
+    }
 
 
 
