@@ -1,7 +1,7 @@
 package MyLinked;
 
 public class MyLinkedList {
-    private Node head;
+    public  Node head;
 
     //头插法
     public  void addFirst(int data){
@@ -24,10 +24,14 @@ public class MyLinkedList {
     public  void addLast(int data){
         Node node=new Node(data);
         Node cur=this.head;
-        while(cur.next!=null){//cur
-            cur=cur.next;
+        if(head==null){
+            this.head=node;
+        }else {
+            while (cur.next != null) {//cur
+                cur = cur.next;
+            }
+            cur.next = node;
         }
-        cur.next=node;
 
 
     }
@@ -337,8 +341,25 @@ public class MyLinkedList {
     public Node detectCycle(){
         Node fast=this.head;
         Node slow=this.head;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow){
+                break;
+            }
+        }
+        if(fast==null||fast.next==null){
+            return null;
+        }
+        //fast=this.head;
+        slow=this.head;
+        while(fast!=slow){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return slow;
 
-        return null;
+
 
 
 
