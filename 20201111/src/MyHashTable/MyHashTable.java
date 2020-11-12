@@ -50,6 +50,7 @@ public class MyHashTable {
                 Integer key=current.key;
                 int hashValue=key.hashCode();
                 int index=hashValue%newArray.length;
+                //头插
                 Node node=new Node(key);
                 node.next=newArray[index];
                 newArray[index]=node;
