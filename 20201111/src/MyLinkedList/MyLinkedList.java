@@ -1,7 +1,7 @@
 package MyLinkedList;
 
 public class MyLinkedList {
-    private Node head;
+    public  Node head;
     //头插法
     public void addFirst(int key){
         Node node=new Node(key);
@@ -321,7 +321,7 @@ public class MyLinkedList {
     }
 
     //判断链表是否是回文结构
-    public boolean chkPalindrome(){
+    public boolean chkPalindrome1(){
         if(head==null){
             return false;
         }
@@ -363,17 +363,87 @@ public class MyLinkedList {
         }
         return true;
 
+    }
 
 
+    //判断是否为回文结构
+    public boolean chkPalindrome(){
+        //1.先找到中间节点
+        Node fast=this.head;
+        Node slow=this.head;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+        //slow指向中心节点的位置
+        //2.进行翻转一半
+        Node cur=slow.next;
+        while(cur!=null){
+            Node curNext=cur.next;
+            cur.next=slow;
+            slow=cur;
+            cur=curNext;
+        }
 
+        //3.从两边开始进行查找
+        while(this.head!=slow){
+            if(this.head.data!=slow.data){
+                return false;
+            }
+            if(this.head.next==slow){
+                return true;
+            }
+            this.head=this.head.next;
+            slow=slow.next;
+        }
+        return false;
 
     }
 
 
+    //10.给定一个链表，判断是否有环
+    public boolean hasCycle(){
+        Node fast=this.head;
+        Node slow=this.head;
+        while(fast!=null&&fast.next!=null){
+            //fast,slow每走一步都要进行判断一下
+            fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow){
+                return true;
+            }
+        }
+
+       return false;
+
+    }
 
 
+    //11.给定一个链表，返回入环的第一个节点，如果无环，则返回null
+    public Node detectCycle(){
+        Node fast=this.head;
+        Node slow=this.head;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            slow=slow.next;
+            if(fast==slow){
+                break;
+            }
+        }
+        //跳出循环有两种退出方式，一种是fast和slow相遇之后退出的，另一种则是不满足循环条件退出的
+        if(fast==null||fast.next==null){
+            return null;
+        }
+        //退出方式只剩fast和slow相遇了
+        //把fast拉回起始点，让他和slow开始一次走一步，直到相遇的时候
+        fast=this.head;
+        while(fast!=slow){
+            fast=fast.next;
+            slow=slow.next;
+        }
+        return slow;
 
-
+    }
 
 
 
