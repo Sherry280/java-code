@@ -3,7 +3,7 @@ package jdbc;
 import java.math.BigDecimal;
 import java.sql.*;
 
-public class Test {
+public class TestDemo2 {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
