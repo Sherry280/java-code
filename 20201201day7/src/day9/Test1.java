@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Test1 {
-    public static void main(String[] args) {
+    public static void main66(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
@@ -54,7 +54,7 @@ public class Test1 {
         String str = new String("hello");
         char[] ch = {'a', 'b'};
 
-        public static void main3 (String[]args){
+        public static void main (String[]args){
             Test1 test1 = new Test1();
             test1.exchange(test1.str, test1.ch);
             System.out.print(test1.str + "and");
