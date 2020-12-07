@@ -5,6 +5,12 @@ import java.util.Scanner;
 
 public class NiuKeTest {
     public static void main(String[] args) {
+        QuickSort q=new QuickSort();
+        long[] array={9,6,56,45,34,7,6,77};
+        q.quickSort(array);
+
+    }
+    public static void main4(String[] args) {
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
         int m=sc.nextInt();
