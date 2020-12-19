@@ -3,6 +3,8 @@ package Niu1216;
 import java.util.Scanner;
 
 public class TestDemo {
+
+
     /**
      * 打印杨辉三角
      *     1
