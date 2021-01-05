@@ -6,7 +6,7 @@ public class Finder {
 
     }
     public int findKth(int[]a,int low,int high,int k){
-        int part=partation(a,low,high);
+        int part=partation(a,low,high);//经过partition后，基准值停留的下标
         if(k==part-low+1){
             return a[part];
         }else if(k>part-low+1){
@@ -28,7 +28,6 @@ public class Finder {
                 low++;
                 a[high]=a[low];
             }
-
         }
         a[low]=key;
         return low;
