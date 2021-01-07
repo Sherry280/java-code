@@ -4,15 +4,6 @@ package day3;
 public class daydayTest {
 
 
-
-
-
-
-
-
-
-
-
     //==和equals的区别：
     //1.==判断的是前后两者的地址是否相同；
     // 2.equals判断的是前后两者的内容是否相等
