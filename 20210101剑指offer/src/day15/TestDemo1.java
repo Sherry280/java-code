@@ -3,7 +3,7 @@ package day15;
 import java.util.Scanner;
 
 public class TestDemo1 {
-    
+
     /**
      * 两个数相加，不使用其他运算符
      * @param args
