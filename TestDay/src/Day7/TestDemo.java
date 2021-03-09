@@ -5,9 +5,8 @@ import java.util.Comparator;
 
 public class TestDemo {
     /**
-     *
+     *回溯算法
      */
-    // 这题主要是排序恶心。。。
         public static ArrayList<ArrayList<Integer>> subsets(int[] S) {
             ArrayList<ArrayList<Integer>> result = new ArrayList<>();
             ArrayList<Integer> inner = new ArrayList<>();
