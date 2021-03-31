@@ -1,6 +1,7 @@
 package First1;
 
 import java.util.Arrays;
+import java.util.TreeSet;
 
 class ListNode {
     int val;
@@ -13,6 +14,23 @@ class ListNode {
 public class TestDemo {
     //一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字
     //使用异或进行计算
+    public static  int[] FindNumsAppearOnce2 (int[] array) {
+        TreeSet<Integer> set=new TreeSet<>((o1,o2)->o1-o2);
+        int[] ret=new int[2];
+        for(int i=0;i<array.length;i++){
+            if(set.contains(array[i])){
+                set.remove(array[i]);
+            }else{
+                set.add(array[i]);
+            }
+        }
+        int index=0;
+        for(Integer e:set){
+            ret[index++]=e;
+        }
+        return ret;
+    }
+
         public static  int[] FindNumsAppearOnce (int[] array) {
             int xor = array[0];
             for (int i = 1; i < array.length; ++i) {
