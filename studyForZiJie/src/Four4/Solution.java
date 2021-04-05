@@ -36,13 +36,15 @@ public class Solution {
         //使用队列存储每一列的元素
         Queue<NL> queue=new LinkedList<>();
         queue.add(new NL(root,0));
+        //队列里面现在不应该是只有根节点和层数信息吗？
         while(!queue.isEmpty()){
+            //取出队列中的节点
             NL n1=queue.remove();
-
+            //队列中的这个节点的两个属性：
             TreeNode node=n1.node;
             int level=n1.level;
-
-            if(level==list.size()){
+            //如果使用层数进行控制输入的顺序的话，那么就要对层数进行判断
+            if(level==list.size()&&level%2==0){
                 list.add(new ArrayList<>());
             }
             List<Integer> innerList=list.get(level);
