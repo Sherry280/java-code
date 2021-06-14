@@ -1,7 +1,5 @@
 package Day0611;
-
 import java.util.Arrays;
-
 public class QuickSort {
     public static void quickSort(int[] array){
         quickSortInternal(array,0,array.length-1);
@@ -12,6 +10,7 @@ public class QuickSort {
        if(size<=1){
            return;
        }
+
         int index=partition(array,lowIndex,highIndex);
         quickSortInternal(array,lowIndex,index-1);
         quickSortInternal(array,index+1, highIndex);
