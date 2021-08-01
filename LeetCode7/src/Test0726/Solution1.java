@@ -17,6 +17,8 @@ public class Solution1 {
         int[] a=array[0];
         int[] b=array[1];
         System.out.println(Arrays.toString(a));
+        System.out.println(array.length);
+        System.out.println(array[0].length);
 
 
     }
