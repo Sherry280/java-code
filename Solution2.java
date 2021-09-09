@@ -1,56 +1,68 @@
-package Test0813.Test0823;
+package Test09.Test0904;
+
+import com.sun.corba.se.impl.activation.ProcessMonitorThread;
 
 import java.util.*;
 
 public class Solution2 {
     /**
-     * 对一个字符串进行排列，计算a的数量
-     * 规则1：如果字符串中带有小写字母a，小写字母a数量多的字符串排在前面
-     * 规则2：如果小写字母a数量相同，字符串长度较长的排前面
-     * 规则3：字母a和字符串长度都相同，则按原字符串中的相对顺序排列
-     * 例如：aa,baaa,cc,a,cba,abc,bb
-     * 输出：baaa,aa,cba,abc,a,cc,bb
+     * 给定两个有序数组，相加之后，输出和最大的前k个
+     * @param arr1
+     * @param arr2
+     * @param k
+     * @return
      */
-    public static String words(String s){
-        if(s.length()==0||s==null){
-            return null;
-        }
-        String[] ss = s.split(",");
-        StringBuffer sb=new StringBuffer();
-        int k=0;
-        Map<String,Integer> map=new HashMap<>();
-        for(String word:ss){
-            //判断每一个字符串中有多少个a
-            k=0;
-            for(int i=0;i<word.length();i++){
-                if(word.charAt(i)=='a'){
-                    k++;
-                }
+    public static int[] findTopKinTwoSortedArray (int[] arr1, int[] arr2, int k) {
+        List<Integer> list1=new ArrayList<>();
+        for(int i=0;i<arr1.length;i++){
+            for(int j=0;j<arr2.length;j++){
+                list1.add(arr1[i]+arr2[j]);
             }
-            map.put(word,k);
         }
-        //对map中的数据根据value进行排序
-        List<Map.Entry<String,Integer>> list=new ArrayList<>(map.entrySet());
-        //通过比较器来实现
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue()-o1.getValue();
+        int[] ret=new int[list1.size()];
+        Object[] objects = list1.toArray();
+        for(int i=0;i<ret.length;i++){
+           ret[i]=(int)objects[i];
+        }
+        Arrays.sort(ret);
+        int[] res=new int[k];
+        List<Integer> list=new ArrayList<>();
+        for(int i=ret.length-1;i>=ret.length-k;i--){
+            list.add(ret[i]);
+        }
+        Object[] objects1 = list.toArray();
+        for(int i=0;i<k;i++){
+            res[i]=(int)objects1[i];
+        }
+        return res;
+    }
+    /**
+     * 最长无重复子数组
+     *不应该进行排序
+     */
+    public static int maxLength (int[] arr) {
+        if(arr.length==0||arr==null){
+            return 0;
+        }
+        int longest=0;
+        Map<Integer,Integer> map=new HashMap<>();
+
+        for(int i=0,j=0;i<arr.length;i++){
+            if(map.containsKey(arr[i])){
+                j=Math.max(j,map.get(arr[i]+1));
             }
-        });
-
-        for(Map.Entry<String,Integer> mapping:list){
-
-           sb.append(mapping.getKey()+",");
+            map.put(arr[i],i);
+            longest= Math.max(longest,i-j+1);
         }
-        return sb.substring(0,sb.length()-1);
-
+        return longest;
 
     }
-
     public static void main(String[] args) {
-        String s="aa,baaa,cc,a,cba,abc,bb";
-        System.out.println(words(s));
+        int[] arr1={1,2,3,4};
+        int[] arr2={5,6,7};
+        System.out.println(findTopKinTwoSortedArray(arr1, arr2, 4));
+//        System.out.println(maxLength(arr));
+
 
     }
 }
