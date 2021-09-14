@@ -1,68 +1,83 @@
-package Test09.Test0904;
+package Test09.Test0913;
 
-import com.sun.corba.se.impl.activation.ProcessMonitorThread;
-
-import java.util.*;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 
 public class Solution2 {
-    /**
-     * 给定两个有序数组，相加之后，输出和最大的前k个
-     * @param arr1
-     * @param arr2
-     * @param k
-     * @return
-     */
-    public static int[] findTopKinTwoSortedArray (int[] arr1, int[] arr2, int k) {
-        List<Integer> list1=new ArrayList<>();
-        for(int i=0;i<arr1.length;i++){
-            for(int j=0;j<arr2.length;j++){
-                list1.add(arr1[i]+arr2[j]);
+
+    public int[] max_sub_matrix (int[][] matrix) {
+        //先求出最大的子矩阵,再求出子矩阵的和
+        int m=matrix.length;
+        int n=matrix[0].length;
+        int[][] res=new int[m][n];
+        for(int i=0;i<m;i++){
+            res[i][0]=matrix[i][0];
+
+        }
+        for(int j=0;j<n;j++){
+            res[0][j]=matrix[0][j];
+        }
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                if(matrix[i][j]==1){
+                    res[i][j]=Math.min(res[i][j-1],Math.min(res[i-1][j-1],res[i-1][j]))+1;
+                }else{
+                    res[i][j]=0;
+                }
             }
         }
-        int[] ret=new int[list1.size()];
-        Object[] objects = list1.toArray();
-        for(int i=0;i<ret.length;i++){
-           ret[i]=(int)objects[i];
+        int max=res[0][0];
+        int max_i=0;
+        int max_j=0;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(res[i][j]>max){
+                    max=res[i][j];
+                    max_i=i;
+                    max_j=j;
+                }
+            }
         }
-        Arrays.sort(ret);
-        int[] res=new int[k];
-        List<Integer> list=new ArrayList<>();
-        for(int i=ret.length-1;i>=ret.length-k;i--){
-            list.add(ret[i]);
+        int sum=0;
+        for(int i=max_i-max+1;i<max_i;i++){
+            for(int j=max_j-max+1;j<max_i;j++){
+                sum+=matrix[i][j];
+            }
         }
-        Object[] objects1 = list.toArray();
-        for(int i=0;i<k;i++){
-            res[i]=(int)objects1[i];
+        int[] ret=new int[5];
+        for(int i=0;i<5;i++){
+            ret[0]=sum;
+
         }
-        return res;
+        return  ret;
+    }
+    public static int findMediaArrays(int[] arr1,int[] arr2){
+        return 0;
     }
     /**
-     * 最长无重复子数组
-     *不应该进行排序
+     *"DKAFWADCBEILBCEEA","BCA"
+     * 找到字符串b在a中的最小的子串
+     *
      */
-    public static int maxLength (int[] arr) {
-        if(arr.length==0||arr==null){
-            return 0;
-        }
-        int longest=0;
-        Map<Integer,Integer> map=new HashMap<>();
+    public static String minSplitWords(String a,String b){
+        Set<String> set=new HashSet<>();
+        for(int i=0;i<=a.length()-b.length();i++){
+            char a1=a.charAt(i);
+            char b1=b.charAt(i);
+            for(int j=0;j<b.length();j++){
 
-        for(int i=0,j=0;i<arr.length;i++){
-            if(map.containsKey(arr[i])){
-                j=Math.max(j,map.get(arr[i]+1));
             }
-            map.put(arr[i],i);
-            longest= Math.max(longest,i-j+1);
         }
-        return longest;
-
+        return null;
     }
     public static void main(String[] args) {
-        int[] arr1={1,2,3,4};
-        int[] arr2={5,6,7};
-        System.out.println(findTopKinTwoSortedArray(arr1, arr2, 4));
-//        System.out.println(maxLength(arr));
-
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String A=sc.nextLine();
+            String B=sc.nextLine();
+            System.out.println(minSplitWords(A, B));
+        }
 
     }
 }
