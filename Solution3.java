@@ -1,75 +1,115 @@
-package Test09.Test0910;
-
-import java.util.*;
+package Test09.Test0916;
 
 public class Solution3 {
     /**
-     * 判断一个字符串中有多少个子串能被22整除
-     * 求出所有子串，判断子串能否被22整除
+     * 1. 转换后的字符串只保留字母[a-zA-Z]和数字[0-9]，去除其他字符；
+     * 2. 输入字符串中的字母字符的前一字符如非字母或数字，该字母转换后为大写，其他字母转换后为小写；
+     *     例外：转换后的字符串第一个字符如果是字母，则该字母转换后为小写；
+     * 3. 转换后的字符串保留数字字符。
+     * 4. 字符串如果为空或者无[a-zA-Z]和数字[0-9]中字符，请默认输出如下字符串"shopee"
      */
-    public static int delTwo(String s){
-        if(s.length()==0||s==null){
-            return 0;
+    public static String camelCase(String newString) {
+        if(newString==""||newString.length()==0){
+            return "shopee";
         }
-        //使用list存储子串
-        List<String> list=new ArrayList<>();
-        for(int i=0;i<s.length();i++){
-            for(int j=i+1;j<=s.length();j++){
-                list.add(s.substring(i,j));
+        StringBuilder res= new StringBuilder();
+        int cnt=0;
+        for(char ch:newString.toCharArray()){
+            //计算字符串中非字符或者非数字的个数
+            if(!isalpha(ch)&&!isdigit(ch)){
+                cnt++;
             }
         }
-        //判断每一个list中的字符串，能否整除22
-        int count=0;
-        for(String ss:list){
-            int i=Integer.parseInt(ss);
-            if(i%22==0){
-                count++;
+        if(cnt==newString.length()){
+            return "shopee";
+        }
+        //"hello_world"   "helloWorld"
+        char[] chars=newString.toCharArray();
+        char ch=chars[0];
+        int index=0;
+        while(index<chars.length) {
+            if (!isalpha(ch) && !isdigit(ch)) {
+                while (!isalpha(chars[index]) && !isdigit(chars[index])) {
+                    index++;
+                }
+                //转为大写
+                res.append(ch - 'a');
+                index++;
+            } else if (isalpha(ch)) {
+                res.append(ch - 'a');
+                index++;
+            } else {
+                res.append(ch);
+                index++;
             }
         }
-        return count;
+
+        for(int i=index;i<chars.length;i++){
+            char c=chars[i];
+            if(!isalpha(c)&&!isdigit(c)){
+                if(i==chars.length-1){
+                    continue;
+                }
+                while(!isalpha(c)&&!isdigit(c)){
+                    i++;
+                    res.append(chars[i] - 'a');
+                }
+            }else{
+                if(isalpha(c)){
+                    res.append(c - 'a');
+
+                }else{
+                    res.append(c);
+                }
+            }
+
+        }
+
+        return res.toString();
+
+
 
     }
-
-    //    public static void main(String[] args) {
-//        String s="12223";
-//        System.out.println(delTwo(s));
-//    }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        while (sc.hasNext()) {
-            String str = sc.nextLine();
-            int n = sc.nextInt();
-            Map<Integer, Integer> map = new HashMap<>();
-            for (int i = 0; i < n; i++) {
-                map.put(sc.nextInt(), sc.nextInt());
-            }
-            //处理每一行数据
-            //对于s要判断有几个周期
-            char[] chars = str.toCharArray();
-            Set<Character> set=new HashSet<>();
-            for(char c:chars){
-                set.add(c);
-            }
-            //有多少周期
-            int circle=set.size();
-            //每个周期有多少个数字
-            int length=str.length()/circle;
-            for (Map.Entry<Integer,Integer> e:map.entrySet()){
-                int key=e.getKey();
-                int value=e.getValue();
-                if(key<length){
-                    System.out.println(key);
-                }else{
-                    if(value>circle){
-                        //第k周期的长度,返回
-                        System.out.println(-1);
-                    }else{
-                        System.out.println(value*length);
-                    }
-                }
-
-            }
-
+    public static boolean isalpha(char c){
+        if(c>='a'&&c<='z'){
+            return true;
         }
+        if(c>='A'&&c<='Z'){
+            return true;
+        }
+        return false;
+
+    }
+    public static boolean isdigit(char c){
+        int i= (int) c;
+        if(c <= 9){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+    /**
+     * 对数组进行排序，要求0排在前面，且非0的元素相对位置不变化
+     */
+    public int[] sort_data(int[] list_data) {
+        int i=0;
+        int n=list_data.length;
+        int k=n-1;
+        for(i=n-1;i>=0;--i){
+            if(list_data[i]!=0){
+                if(list_data[k]==0){
+                    list_data[k]=list_data[i];
+                    list_data[i]=0;
+                }
+                --k;
+            }
+        }
+        return list_data;
+    }
+    public static void main(String[] args) {
+        String s="hello_world";
+        System.out.println(camelCase(s));
+
     }
 }
