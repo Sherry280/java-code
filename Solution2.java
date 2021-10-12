@@ -1,62 +1,49 @@
-package Test09.Test0927;
-
-import java.util.Arrays;
+package Test10.Test1009;
 
 public class Solution2 {
     /**
-     * 返回拼接后的最短的回文串
+     * 判断输入三个字符串类型参数的能否构成三角形
+     * 都成普通三角形，返回1；
+     * 构成等腰三角形，返回2；
+     * 构成等边三角形，返回3；
+     * 其他类型，返回0
      */
-    public static String shortestPalindrome (String s) {
-        int n=s.length();
-        int[] ret=new int[n];
-        Arrays.fill(ret,-1);
-        for(int i=1;i<n;i++){
-            int j=ret[i-1];
-            while(j!=-1&&s.charAt(j+1)!=s.charAt(i)){
-                j=ret[i];
-            }
-            if(s.charAt(j+1)==s.charAt(i)){
-                ret[i]=j+1;
+    public int triangleType (String str1, String str2, String str3) {
+        for(int i=0;i<str1.length();i++){
+            if(str1.charAt(i)<=0||str1.charAt(i)>9){
+                return 0;
             }
         }
-       int best=-1;
-        for(int i=n-1;i>=0;i--){
-            while(best!=-1&&s.charAt(best+1)!=s.charAt(i)){
-                best=ret[best];
-            }
-            if(s.charAt(best+1)==s.charAt(i)){
-                ++best;
+        for(int i=0;i<str2.length();i++){
+            if(str2.charAt(i)<=0||str2.charAt(i)>9){
+                return 0;
             }
         }
-        String add=(best==n-1?"":s.substring(best+1));
-        StringBuffer sb=new StringBuffer(add).reverse();
-        sb.append(s);
-        return  sb.toString();
-    }
-    /**
-     * 找出重复的那个数字 1,2,4,4
-     */
-    public static int findDuplicate (int[] nums) {
-        int i=0;
-        int temp=0;
-        while(true){
-            if(nums[i]==0){
-                return temp;
+        for(int i=0;i<str3.length();i++){
+            if(str3.charAt(i)<=0||str3.charAt(i)>9){
+                return 0;
             }
-            temp=nums[i];
-            nums[i]=0;
-            i=temp;
         }
-//        int[] ret=new int[n];
-//        for(int i=0;i<n;i++){
-//            ret[i-'0']++;
-//        }
-
+        int s1 = Integer.parseInt(str1);
+        int s2=Integer.parseInt(str2);
+        int s3=Integer.parseInt(str3);
+        if(s1>=Integer.MAX_VALUE||s2>=Integer.MAX_VALUE||s3>=Integer.MAX_VALUE){
+            return 0;
+        }
+        if(s1==s2&&s2==s3){
+            return 3;
+        }else if(s1==s2||s2==s3){
+            return 2;
+        }else
+        //普通三角形：两边之和大于第三边
+        if((s1+s2)>s3||(s2+s3)>s1||(s1+s3)>s2){
+            return 1;
+        }else {
+            return 0;
+        }
 
     }
     public static void main(String[] args) {
-        String s="aaeceaaa";
-        System.out.println(shortestPalindrome(s));
 
     }
 }
