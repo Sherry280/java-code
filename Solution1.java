@@ -1,76 +1,57 @@
-package Test10.Test1009;
+package Test10.Test1013;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Solution1 {
     /**
-     * 1,2,3,2,2,3
-     * 找出一个数组中最多的数字所在的最小长度
-     * 输出2，5
-     *
+     * 1.以字符串的形式提供给你一段英文文章，请编写一个程序。
+     * 该程序将统计指定字符串中每个单词出现的次数，并
+     * 输出出现次数最多的单词及其出现次数（不限语言，函数自行声明）
      */
-    public static void maxLength(int n,int[] array){
-        HashMap<Integer,Integer> map=new HashMap<>();
-        for(int i=0;i<array.length;i++){
-            if(!map.containsKey(array[i])){
-                map.put(array[i],1);
+    public static String[] strToArray(String s){
+        s=s.toLowerCase();
+        String res="[\\W]+";
+        s=s.replaceAll(res," ");
+        String[] strs=s.split(" ");
+        return strs;
+    }
+    public static void maxCountWords(String[] strs){
+        HashMap<String,Integer> map=new HashMap();
+        for(String s:strs){
+            if(!map.containsKey(s)){
+                map.put(s,1);
             }else{
-                map.put(array[i],map.get(array[i])+1);
+                map.put(s,map.get(s)+1);
             }
-        }
-        int max=0;
-        int num=0;
-        for(Map.Entry<Integer,Integer> e:map.entrySet()){
-            int key=e.getKey();
-            int value=e.getValue();
-            if(value>=max) {
-                max = Math.max(max, value);
-                num=key;
-            }
-        }
-        //现在找到出现次数最多的那个数字
-        int start=0;
 
-        for(int i=0;i<array.length;i++){
-            if(array[i]==num){
-                start=i+1;
-                break;
-            }
-        }
-        int z=start;
-        int count=0;
-        int end=start;
-       while(count<num){
-            end++;
-            if(array[start]==num){
-                count++;
-            }
-            start++;
-        }
-        System.out.println(z+" "+end);
-//        Arrays.sort(array);
-//        int count=0;
-//        int ret=array[0];
-//        for(int i=1;i<array.length;i++){
-//            if(ret==array[i]){
-//                count++;
+//            in=map.put(s,1);
+//            if(in!=null){
+//                map.put(s,in+1);
 //            }
-//        }
+        }
+        Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
+        String maxStr=null;
+        int maxValue=0;
+        for(Map.Entry<String, Integer> e:entrySet){
+            String key=e.getKey();
+            Integer value=e.getValue();
+            if(value>maxValue){
+                maxStr=key;
+            }
+        }
+        System.out.println("出现次数最多的单词是："+maxStr+"出现了"+maxValue+"次");
 
     }
+
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         while(sc.hasNext()){
-            int n=sc.nextInt();
-            int[] array=new int[n];
-            for(int i=0;i<array.length;i++){
-                array[i]=sc.nextInt();
-            }
-            maxLength(n,array);
+            String str=sc.nextLine();
+            String[] strs=strToArray(str);
+            maxCountWords(strs);
         }
-
     }
 }
